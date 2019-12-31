@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
-
+import Sidebar from "../components/Sidebar";
+import '../App.css';
 
 class Detail extends Component {
   state = {
@@ -34,9 +35,10 @@ class Detail extends Component {
           </Col>
         </Row>
         <Row>
-          <Col size="md-10 md-offset-1">
+          <Col size="md-12">
             <article>
               <h1>Details</h1>
+              <hr></hr>
               <p>
                 {this.state.log.details}            
               </p>

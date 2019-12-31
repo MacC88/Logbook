@@ -13,6 +13,10 @@ export default {
   deleteLog: function(id) {
     return axios.delete("/api/logs/" + id);
   },
+
+  putLog: function(id) {
+    return axios.put("/api/logs/" + id);
+  },
   // Saves a book to the database
   saveLog: function(logData) {
     return axios.post("/api/logs", logData);

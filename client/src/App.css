@@ -1,0 +1,56 @@
+.sidebar {
+    padding: 8px 50px 8px 50px;
+    background-color:#868e96;
+    color: white;
+    font: caption;
+    min-width: 500px;
+    height: 200px;
+    font-size: x-large;
+}
+
+.sidebarLogbook {
+    padding: 8px 51.5px 8px 51.5px;
+    background-color:#868e96;
+    color: white;
+    font: caption;
+    min-width: 500px;
+    height: 200px;
+    font-size: x-large;
+}
+
+.sidebarHome {
+    padding: 8px 65.5px 8px 65.5px;
+    background-color:#868e96;
+    color: white;
+    font: caption;
+    min-width: 500px;
+    height: 200px;
+    font-size: x-large;
+}
+
+.sidebarTSB {
+    padding: 8px 74px 8px 74.5px;
+    background-color:#868e96;
+    color: white;
+    font: caption;
+    min-width: 500px;
+    height: 200px;
+    font-size: x-large;
+}
+
+.sidebarWarranty {
+    padding: 8px 49.5px 8px 49.5px;
+    background-color:#868e96;
+    color: white;
+    font: caption;
+    min-width: 500px;
+    height: 200px;
+    font-size: x-large;
+}
+
+.sidebarMenu {
+    margin-top: 0px;
+    margin-left: -15px;
+    background-color: #343a40;
+    height: 600px;
+}

@@ -7,6 +7,7 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import EditBtn from "../components/EditBtn";
+import { Sidebar } from "../components/Sidebar";
 
 class Logs extends Component {
   state = {
@@ -29,7 +30,7 @@ class Logs extends Component {
   };
 
   putLog = id => {
-    API.putLog(id)
+    API.getLog(id)
       .then(res => this.loadLogs())
       .catch(err => console.log(err));
   };
@@ -67,9 +68,25 @@ class Logs extends Component {
       <Container fluid>
         <Row>
         <Col size="md-2">
-            <Link to="/logs">Logbook</Link>
+          <div className="sidebarMenu">
+            <br></br>
+            <br></br>       
+            <Link className="sidebarHome" to="/logs/5e09467873fda744f866b9f5">Home</Link>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Link className="sidebarTSB" to="/logs/5e09467873fda744f866b9f5">TSB</Link>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Link className="sidebarWarranty" to="/logs/5e09467873fda744f866b9f5">Warranty</Link>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Link className="sidebarLogbook" to="/logs/5e09467873fda744f866b9f5">Logbook</Link>
+           </div> 
           </Col>
-          <Col size="md-4">
+          <Col size="md-5">
             <form style={{marginTop: 50}}>
               <Input
                 value={this.state.ticket}
@@ -97,7 +114,7 @@ class Logs extends Component {
               </FormBtn>
             </form>
           </Col>
-          <Col size="md-4 sm-12">
+          <Col size="md-5 sm-12">
             {this.state.logs.length ? (
               <List>
                 {this.state.logs.map(log => (
@@ -117,7 +134,7 @@ class Logs extends Component {
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 style={{marginTop: 50}}>No Results to Display</h3>
             )}
           </Col>
         </Row>
