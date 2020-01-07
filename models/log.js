@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const logSchema = new Schema({
   ticket: { type: String, required: true },
   hours: { type: String, required: true },
+  vin: String,
   details: String,
   date: { type: Date, default: Date.now}
 });

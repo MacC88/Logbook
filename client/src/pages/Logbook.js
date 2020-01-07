@@ -7,38 +7,39 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 import EditBtn from "../components/EditBtn";
-import { Sidebar } from "../components/Sidebar";
 
-class Logs extends Component {
+
+class Logbook extends Component {
   state = {
     logs: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    ticket: "",
+    hours: "",
+    vin: "",
+    details: ""
   };
 
   componentDidMount() {
-    this.loadLogs();
+    this.loadLogbook();
   }
 
-  loadLogs = () => {
-    API.getLogs()
+  loadLogbook = () => {
+    API.getLogbook()
       .then(res =>
-        this.setState({ logs: res.data, ticket: "", hours: "", details: "" })
+        this.setState({ logs: res.data, ticket: "", hours: "", vin: "", details: "" })
       )
       .catch(err => console.log(err));
   };
 
   putLog = id => {
     API.getLog(id)
-      .then(res => this.loadLogs())
+      .then(res => this.loadLogbook())
       .catch(err => console.log(err));
   };
 
 
   deleteLog = id => {
     API.deleteLog(id)
-      .then(res => this.loadLogs())
+      .then(res => this.loadLogbook())
       .catch(err => console.log(err));
   };
 
@@ -55,10 +56,11 @@ class Logs extends Component {
       API.saveLog({
         ticket: this.state.ticket,
         hours: this.state.hours,
+        vin: this.state.vin,
         details: this.state.details,
         date: this.state.date
       })
-        .then(res => this.loadLogs())
+        .then(res => this.loadLogbook())
         .catch(err => console.log(err));
     }
   };
@@ -70,20 +72,26 @@ class Logs extends Component {
         <Col size="md-2">
           <div className="sidebarMenu">
             <br></br>
-            <br></br>       
-            <Link className="sidebarHome" to="/logs/5e09467873fda744f866b9f5">Home</Link>
+            <br></br> 
+            <a href="/" class="btn btn-secondary btn-block font-weight-bold" role="button">Home</a>
+            <br></br>
+            <br></br>  
+            <a href="/search" class="btn btn-secondary btn-block font-weight-bold" role="button">Search</a>
             <br></br>
             <br></br>
-            <br></br>
-            <Link className="sidebarTSB" to="/logs/5e09467873fda744f866b9f5">TSB</Link>
-            <br></br>
+            <a href="/logbook" class="btn btn-secondary btn-block font-weight-bold active" role="button">Logbook</a>
             <br></br>
             <br></br>
-            <Link className="sidebarWarranty" to="/logs/5e09467873fda744f866b9f5">Warranty</Link>
+            <a href="/warranty" class="btn btn-secondary btn-block font-weight-bold" role="button">Warranty</a>
             <br></br>
             <br></br>
+            <a href="/tsb" class="btn btn-secondary btn-block font-weight-bold" role="button">TSB</a>
             <br></br>
-            <Link className="sidebarLogbook" to="/logs/5e09467873fda744f866b9f5">Logbook</Link>
+            <br></br>
+            <a href="/diagnostic" class="btn btn-secondary btn-block font-weight-bold" role="button">Diagnostic</a>
+            <br></br>
+            <br></br>
+            <a href="/repair" class="btn btn-secondary btn-block font-weight-bold" role="button">Repair</a>
            </div> 
           </Col>
           <Col size="md-5">
@@ -99,6 +107,12 @@ class Logs extends Component {
                 onChange={this.handleInputChange}
                 name="hours"
                 placeholder="Hours (required)"
+              />
+              <Input
+                value={this.state.vin}
+                onChange={this.handleInputChange}
+                name="vin"
+                placeholder="Vin # (Optional)"
               />
               <TextArea
                 value={this.state.details}
@@ -125,6 +139,8 @@ class Logs extends Component {
                       <br></br>
                       Hours: {log.hours}
                       <br></br>
+                      Vin: {log.vin}
+                      <br></br>
                       Date: {log.date}
                       </strong>
                     </Link>
@@ -143,4 +159,4 @@ class Logs extends Component {
   }
 }
 
-export default Logs;
+export default Logbook;

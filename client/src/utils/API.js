@@ -2,7 +2,7 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getLogs: function() {
+  getLogbook: function() {
     return axios.get("/api/logs");
   },
   // Gets the book with the given id
